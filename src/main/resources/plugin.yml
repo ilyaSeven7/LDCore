@@ -2,3 +2,4 @@ name: LDCore
 version: '${project.version}'
 main: me.litedeforged.ldcore.LDCore
 api-version: '1.19'
+depend: [Essentials]
