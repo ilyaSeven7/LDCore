@@ -1,5 +1,6 @@
 package me.litedeforged.ldcore.onplayerjoin;
 
+import com.earth2me.essentials.Essentials;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
