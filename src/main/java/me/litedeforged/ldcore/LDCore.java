@@ -11,12 +11,13 @@ public final class LDCore extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<red>Plugin Has Been Enabled!"));
+        Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<green>Plugin Has Been Enabled!"));
         getServer().getPluginManager().registerEvents(new NickNameCheck(), this);
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<red>Plugin Has Been Disabled"));
     }
 }
