@@ -54,12 +54,11 @@ public class PlayerDeath implements Listener {
     }
     public Component coordcolored(Player player) {
 
-        String getX = String.valueOf(player.getLocation().getBlockX());
-        String getY = String.valueOf(player.getLocation().getBlockY());
-        String getZ = String.valueOf(player.getLocation().getBlockZ());
+        String getX = String.valueOf(MiniMessage.miniMessage().deserialize("<aqua>" + player.getLocation().getBlockX() + "<white>-X"));
+        String getY = String.valueOf(MiniMessage.miniMessage().deserialize(" <aqua>" + player.getLocation().getBlockY() + "<white>-Y"));
+        String getZ = String.valueOf(MiniMessage.miniMessage().deserialize(" <aqua>" + player.getLocation().getBlockZ() + "<white>-Z"));
 
-
-        return MiniMessage.miniMessage().deserialize(" <aqua>" + getX + " <aqua>" + getY + " <aqua>" + getZ);
+        return MiniMessage.miniMessage().deserialize(getX + getY + getZ);
     }
 
 
