@@ -1,5 +1,6 @@
 package me.litedeforged.ldcore;
 
+import me.litedeforged.ldcore.DeathMessage.Listeners;
 import me.litedeforged.ldcore.message.Components;
 import me.litedeforged.ldcore.NickNameChanger.NickNameCheck;
 import org.bukkit.Bukkit;
@@ -13,6 +14,7 @@ public final class LDCore extends JavaPlugin {
         // Plugin startup logic
         Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<green>Plugin Has Been Enabled!"));
         getServer().getPluginManager().registerEvents(new NickNameCheck(), this);
+        getServer().getPluginManager().registerEvents(new Listeners(), this);
     }
 
     @Override
