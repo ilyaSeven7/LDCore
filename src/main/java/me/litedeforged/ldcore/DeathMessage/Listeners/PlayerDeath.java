@@ -1,4 +1,4 @@
-package me.litedeforged.ldcore.deathMessage.Listeners;
+package me.litedeforged.ldcore.DeathMessage.Listeners;
 
 import me.litedeforged.ldcore.message.Components;
 import org.bukkit.entity.Player;
