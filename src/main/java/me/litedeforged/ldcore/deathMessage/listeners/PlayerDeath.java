@@ -58,12 +58,13 @@ public class PlayerDeath implements Listener {
         return "X: " + getX + " Y: " + getY + " Z: " + getZ;
     }
     public Component coordcolored(Player player) {
-        String getworld = String.valueOf(MiniMessage.miniMessage().deserialize("<aqua>" + player.getWorld().getName()));
-        String getX = String.valueOf(MiniMessage.miniMessage().deserialize(" <aqua>" + player.getLocation().getBlockX() + "<white>-X"));
-        String getY = String.valueOf(MiniMessage.miniMessage().deserialize(" <aqua>" + player.getLocation().getBlockY() + "<white>-Y"));
-        String getZ = String.valueOf(MiniMessage.miniMessage().deserialize(" <aqua>" + player.getLocation().getBlockZ() + "<white>-Z"));
 
-        return MiniMessage.miniMessage().deserialize("<white>You Died In<gray>: " + getworld + getX + getY + getZ);
+        String getworld = player.getWorld().getName();
+        String getX = String.valueOf(player.getLocation().getBlockX());
+        String getY = String.valueOf(player.getLocation().getBlockY());
+        String getZ = String.valueOf(player.getLocation().getBlockZ());
+
+        return MiniMessage.miniMessage().deserialize("<aqua>You Died In<dark_gray>: " + "<light_purple>" + getworld + " <white>" + getX + "<dark_gray>-<white>X" + " <white>" + getY  + "<dark_gray>-<white>Y" + " <white>" + getZ  + "<dark_gray>-<white>Z");
     }
 
 
