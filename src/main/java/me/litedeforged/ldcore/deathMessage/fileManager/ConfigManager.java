@@ -1,9 +1,8 @@
-package me.litedeforged.ldcore.deathMessage.FileManager;
+package me.litedeforged.ldcore.deathMessage.fileManager;
 
 import me.litedeforged.ldcore.LDCore;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.configuration.file.YamlConfiguration;
 
 
 import java.io.File;
