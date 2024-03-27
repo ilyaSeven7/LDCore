@@ -50,7 +50,7 @@ public class PlayerDeath implements Listener {
         String getZ = String.valueOf(player.getLocation().getBlockZ());
 
 
-        return getX + getY + getZ;
+        return "X: " + getX + " Y: " + getY + " Z: " + getZ;
     }
     public Component coordcolored(Player player) {
 
