@@ -1,0 +1,6 @@
+#When A Player Die Send Dead Location For Them.
+deathMessage:
+  toggle: true
+
+nickName:
+  toggle: true
