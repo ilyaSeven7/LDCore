@@ -1,6 +1,11 @@
 #When A Player Die Send Dead Location For Them.
-deathMessage:
+DeathMessage:
   toggle: true
 
-nickName:
+#When A Player Die Log Their Location, World, Date In TxT File.
+NickName:
+  toggle: true
+
+#When A Player Joining The Server Check Their Rank If They Have It Skip And If Not Reset Their Name Into The Default.
+PlayerDeathLogger:
   toggle: true
