@@ -1,7 +1,7 @@
 package me.litedeforged.ldcore;
 
 import me.litedeforged.ldcore.deathMessage.FileManager.ConfigManager;
-import me.litedeforged.ldcore.deathMessage.Listeners;
+import me.litedeforged.ldcore.deathMessage.FileManager.Listeners.PlayerDeath;
 import me.litedeforged.ldcore.message.Components;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,7 +20,7 @@ public final class LDCore extends JavaPlugin {
         // Plugin startup logic
         Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<green>Plugin Has Been Enabled!"));
         //getServer().getPluginManager().registerEvents(new NickNameCheck(), this);
-        getServer().getPluginManager().registerEvents(new Listeners(), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
 
         ConfigManager.setup();
     }
