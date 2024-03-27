@@ -22,6 +22,17 @@ public class PlayerDeath implements Listener {
 
         ConfigManager.setup();
 
+
+//      #When A Player Die Send Dead Location For Them.
+        if (LDCore.getInstance().getConfig().getConfigurationSection("DeathMessage").getBoolean("toggle")) {
+            player.sendMessage(coordcolored(player));
+        }
+
+//      #When A Player Die Log Their Location, World, Date In TxT File.
+        if (!LDCore.getInstance().getConfig().getConfigurationSection("PlayerDeathLogger").getBoolean("toggle")) {
+            return;
+        }
+
         if (player.getKiller() == null) {
 
             ConfigManager.writer("[" +LocalTime.now().withNano(0) + "] " +
@@ -33,12 +44,6 @@ public class PlayerDeath implements Listener {
                     player.getName() + " Has Slayed by : " + player.getKiller().getName() +
                     ". World: " + player.getLocation().getWorld().getName() +
                     " , Location: " + coord(player)); // end of line
-        }
-
-
-//      #When A Player Die Send Dead Location For Them.
-        if (LDCore.getInstance().getConfig().getConfigurationSection("deathMessage").getBoolean("toggle")) {
-            player.sendMessage(coordcolored(player));
         }
 
     }
