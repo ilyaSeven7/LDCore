@@ -6,5 +6,6 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 public class Components {
     public Component components(String s) {
         return MiniMessage.miniMessage().deserialize(s);
+
     }
 }
