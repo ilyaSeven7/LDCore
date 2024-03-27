@@ -1,6 +1,7 @@
 package me.litedeforged.ldcore.nickNameChanger;
 
 import com.earth2me.essentials.Essentials;
+import me.litedeforged.ldcore.LDCore;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,6 +9,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class NickNameCheck implements Listener {
+
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Essentials ess = (Essentials) Bukkit.getPluginManager().getPlugin("Essentials");

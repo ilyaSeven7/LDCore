@@ -31,8 +31,8 @@ public class ConfigManager {
     public static void writer(String text) {
 
         try {
-            FileWriter writer = new FileWriter(file);
-            writer.write(text);
+            FileWriter writer = new FileWriter(file, true);
+            writer.write(text + "\n");
             writer.flush();
             writer.close();
         } catch (IOException e) {
