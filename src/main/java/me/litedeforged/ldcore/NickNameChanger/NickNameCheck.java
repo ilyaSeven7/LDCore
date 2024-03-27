@@ -1,4 +1,4 @@
-package me.litedeforged.ldcore.onplayerjoin;
+package me.litedeforged.ldcore.NickNameChanger;
 
 import com.earth2me.essentials.Essentials;
 import org.bukkit.Bukkit;

@@ -1,7 +1,7 @@
 package me.litedeforged.ldcore;
 
 import me.litedeforged.ldcore.message.Components;
-import me.litedeforged.ldcore.onplayerjoin.NickNameCheck;
+import me.litedeforged.ldcore.NickNameChanger.NickNameCheck;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
