@@ -1,8 +1,6 @@
 package me.litedeforged.ldcore.DeathMessage;
 
 import me.litedeforged.ldcore.message.Components;
-import net.kyori.adventure.text.Component;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
