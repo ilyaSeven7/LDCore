@@ -1,10 +1,8 @@
 package me.litedeforged.ldcore;
 
-
-import com.earth2me.essentials.Essentials;
+import me.litedeforged.ldcore.deathMessage.FileManager.ConfigManager;
 import me.litedeforged.ldcore.deathMessage.Listeners.PlayerDeath;
 import me.litedeforged.ldcore.message.Components;
-import me.litedeforged.ldcore.nickNameChanger.NickNameCheck;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -19,17 +17,17 @@ public final class LDCore extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-
+        // Plugin startup logic
         Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<green>Plugin Has Been Enabled!"));
-        //Bukkit.getPluginManager().registerEvents(new NickNameCheck(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerDeath(), this);
+        //getServer().getPluginManager().registerEvents(new NickNameCheck(), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
 
-
+        ConfigManager.setup();
     }
 
     @Override
     public void onDisable() {
-
+        // Plugin shutdown logic
         Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<red>Plugin Has Been Disabled"));
     }
 }
