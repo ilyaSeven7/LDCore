@@ -42,7 +42,7 @@ public class PlayerDeath implements Listener {
             return;
         }
         ConfigManager.writer("[" +LocalTime.now().withNano(0) + "] " +
-                player.getName() + " Has Slayed by: " + player.getKiller().getName() + "Cause: " + player.getLastDamageCause().getCause() +
+                player.getName() + " Has Slayed by: " + player.getKiller().getName() + " Cause: " + player.getLastDamageCause().getCause() +
                 ". World: " + player.getLocation().getWorld().getName() +
                 " , Location: " + coord(player)); // end of line
 
@@ -55,7 +55,7 @@ public class PlayerDeath implements Listener {
         String getZ = String.valueOf(player.getLocation().getBlockZ());
 
 
-        return getX + "-X" + getY + "-Y" + getZ + "-Z";
+        return getX + "-X " + getY + "-Y " + getZ + "-Z";
     }
     public Component coordcolored(Player player) {
 
