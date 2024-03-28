@@ -29,7 +29,7 @@ public class PlayerDeath implements Listener {
         }
 
 //      #When A Player Die Log Their Location, World, Date In TxT File.
-        if (!LDCore.getInstance().getConfig().getConfigurationSection("PlayerDeathLogger").getBoolean("toggle")) {
+        if (LDCore.getInstance().getConfig().getConfigurationSection("PlayerDeathLogger").getBoolean("toggle")) {
 
             ConfigManager.writer("[" +LocalTime.now().withNano(0) + "]" +
                     " (" + player.getName() + " Has Slayed by " + killer(player) + ")" + " (DeathReason » " + cause(player) + ")" +
