@@ -30,22 +30,13 @@ public class PlayerDeath implements Listener {
 
 //      #When A Player Die Log Their Location, World, Date In TxT File.
         if (!LDCore.getInstance().getConfig().getConfigurationSection("PlayerDeathLogger").getBoolean("toggle")) {
-            return;
+
+            ConfigManager.writer("[" +LocalTime.now().withNano(0) + "]" +
+                    " (" + player.getName() + " Has Slayed by " + killer(player) + ")" + " (DeathReason » " + cause(player) + ")" +
+                    " (WorldName » " + player.getLocation().getWorld().getName() + ")" +
+                    " (CordLocation » " + coord(player) + ")"); // end of line
+
         }
-
-        if (player.getLastDamageCause() == null || player.getKiller() == null) {
-
-            ConfigManager.writer("[" +LocalTime.now().withNano(0) + "] " +
-                    player.getName() + "Died, Death Reason: " +  "CauseAndKiller Is Null" +
-                    ". World: " + player.getLocation().getWorld().getName() +
-                    " , Location: " + coord(player)); // end of line
-            return;
-        }
-        ConfigManager.writer("[" +LocalTime.now().withNano(0) + "] " +
-                player.getName() + " Has Slayed by: " + player.getKiller().getName() + " Cause: " + player.getLastDamageCause().getCause() +
-                ". World: " + player.getLocation().getWorld().getName() +
-                " , Location: " + coord(player)); // end of line
-
     }
 
     public String coord(Player player) {
@@ -65,6 +56,20 @@ public class PlayerDeath implements Listener {
         String getZ = String.valueOf(player.getLocation().getBlockZ());
 
         return MiniMessage.miniMessage().deserialize("<aqua>You Died In<dark_gray>: " + "<light_purple>" + getworld + " <white>" + getX + "<dark_gray>-<white>X" + " <white>" + getY  + "<dark_gray>-<white>Y" + " <white>" + getZ  + "<dark_gray>-<white>Z");
+    }
+
+    public String cause(Player player) {
+        if (player.getLastDamageCause() == null) {
+            return "Unknown Cause";
+        }
+        return player.getLastDamageCause().getCause().name();
+    }
+
+    public String killer(Player player) {
+        if (player.getKiller() == null) {
+            return "Unknown Killer";
+        }
+        return player.getKiller().getName();
     }
 
 
