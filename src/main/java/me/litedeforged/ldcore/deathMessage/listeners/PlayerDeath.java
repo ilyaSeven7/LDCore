@@ -33,18 +33,18 @@ public class PlayerDeath implements Listener {
             return;
         }
 
-        if (player.getKiller() == null) {
+        if (player.getLastDamageCause() == null || player.getKiller() == null) {
 
             ConfigManager.writer("[" +LocalTime.now().withNano(0) + "] " +
-                    player.getName() + "Died, Death Reason: " +  player.getLastDamageCause().getCause() +
+                    player.getName() + "Died, Death Reason: " +  "CauseAndKiller Is Null" +
                     ". World: " + player.getLocation().getWorld().getName() +
                     " , Location: " + coord(player)); // end of line
-        } else {
-            ConfigManager.writer("[" +LocalTime.now().withNano(0) + "] " +
-                    player.getName() + " Has Slayed by : " + player.getKiller().getName() +
-                    ". World: " + player.getLocation().getWorld().getName() +
-                    " , Location: " + coord(player)); // end of line
+            return;
         }
+        ConfigManager.writer("[" +LocalTime.now().withNano(0) + "] " +
+                player.getName() + " Has Slayed by: " + player.getKiller().getName() + "Cause: " + player.getLastDamageCause().getCause() +
+                ". World: " + player.getLocation().getWorld().getName() +
+                " , Location: " + coord(player)); // end of line
 
     }
 
