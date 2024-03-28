@@ -37,6 +37,7 @@ public class PlayerDeath implements Listener {
                     " (CordLocation » " + coord(player) + ")"); // end of line
 
         }
+
     }
 
     public String coord(Player player) {
