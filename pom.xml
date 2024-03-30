@@ -83,5 +83,12 @@
               </exclusion>
           </exclusions>
       </dependency>
+      <dependency>
+          <groupId>ga.strikepractice</groupId>
+          <artifactId>strikepractice-api</artifactId>
+          <version>1.0.0</version>
+          <scope>system</scope>
+          <systemPath>${project.basedir}/strikepractice-api.jar</systemPath>
+      </dependency>
   </dependencies>
 </project>
