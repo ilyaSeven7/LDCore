@@ -20,6 +20,8 @@ public class PlayerDeath implements Listener {
 
         Player player = event.getPlayer();
 
+        LDCore.uuids.remove(player.getUniqueId());
+
         ConfigManager.setup();
 
 
