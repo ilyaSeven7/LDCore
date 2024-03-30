@@ -3,14 +3,21 @@ package me.litedeforged.ldcore;
 import me.litedeforged.ldcore.deathMessage.listeners.PlayerDeath;
 import me.litedeforged.ldcore.message.Components;
 import me.litedeforged.ldcore.nicknamechanger.NickNameCheck;
+import me.litedeforged.ldcore.practiceapi.commands.FFABack;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public final class LDCore extends JavaPlugin {
 
     private static LDCore instance;
 
     public static LDCore getInstance() {return instance;}
+
+    public static List<UUID> uuids = new ArrayList<>();
 
 
     Components getter = new Components();
@@ -19,6 +26,7 @@ public final class LDCore extends JavaPlugin {
         instance = this;
         // Plugin startup logic
         saveDefaultConfig();
+        getCommand("back").setExecutor(new FFABack());
         Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<green>Plugin Has Been Enabled!"));
         Bukkit.getPluginManager().registerEvents(new NickNameCheck(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerDeath(), this);
