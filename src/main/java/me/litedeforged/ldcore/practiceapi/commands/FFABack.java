@@ -24,15 +24,15 @@ public class FFABack implements CommandExecutor {
                     assert player != null;
                     if (strikePracticeAPI.getFight(player) == null) {
                         player.sendMessage(getter.components("<red>You Can Only Use This Command On FFa Crystal Mode"));
-                        return false;
+                        return true;
                     }
-                    if (strikePracticeAPI.getFight(player).getArena().isFFA()) {
+                    if (strikePracticeAPI.getFight(player).getArena().getName().equalsIgnoreCase("crystalffa")) {
 
-                        if (player.getLastDeathLocation() == null) return false;
+                        if (player.getLastDeathLocation() == null) return true;
 
                         if (LDCore.uuids.contains(player.getUniqueId())) {
                             player.sendMessage(getter.components("<red>You Can't Use /Back For Now!"));
-                            return false;
+                            return true;
                         }
 
 
