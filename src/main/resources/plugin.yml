@@ -7,5 +7,4 @@ depend:
   - StrikePractice
 commands:
   back:
-    usage: '/back'
-
+    permission: 'ldcore.practicepvp.commands.back'
