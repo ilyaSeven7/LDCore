@@ -9,11 +9,10 @@ import me.litedeforged.ldcore.nicknamechanger.NickNameCheck;
 import me.litedeforged.ldcore.practicepvp.commands.FFABack;
 import me.litedeforged.ldcore.practicepvp.ConfigManagerLocation;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public final class LDCore extends JavaPlugin {
 
@@ -22,6 +21,8 @@ public final class LDCore extends JavaPlugin {
     public static LDCore getInstance() {return instance;}
 
     public static List<UUID> uuids = new ArrayList<>();
+
+    public static Map<UUID, Location> locaitonsList = new HashMap<>();
 
     public static StrikePracticeAPI strikePracticeAPI = StrikePractice.getAPI();
 
@@ -34,6 +35,7 @@ public final class LDCore extends JavaPlugin {
         if (getConfig().getConfigurationSection("PracticeBackCommand").getBoolean("enable")) {
             getCommand("back").setExecutor(new FFABack());
         }
+        strikePracticeAPI.getArena("crystalffa").setCustomMaxChangesPerTick(500);
         ConfigManager.setup();
         ConfigManagerLocation.setup();
         Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<green>Plugin Has Been Enabled!"));

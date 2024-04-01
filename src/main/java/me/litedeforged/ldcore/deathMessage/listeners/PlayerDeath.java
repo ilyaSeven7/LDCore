@@ -26,10 +26,8 @@ public class PlayerDeath implements Listener {
         Player player = event.getPlayer();
         if (LDCore.strikePracticeAPI.getFight(player).getArena().getName().equalsIgnoreCase("crystalffa")) {
             LDCore.uuids.remove(player.getUniqueId());
-            savedeathlocation(player);
+            saveDeathLocation(player);
         }
-
-
 
 //      #When A Player Die Send Dead Location For Them.
         if (LDCore.getInstance().getConfig().getConfigurationSection("DeathMessage").getBoolean("toggle")) {
@@ -67,16 +65,16 @@ public class PlayerDeath implements Listener {
         return MiniMessage.miniMessage().deserialize("<aqua>You Died In<dark_gray>: " + "<light_purple>" + getworld + " <white>" + getX + "<dark_gray>-<white>X" + " <white>" + getY  + "<dark_gray>-<white>Y" + " <white>" + getZ  + "<dark_gray>-<white>Z");
     }
 
-    public void savedeathlocation(Player player) {
-        ConfigManagerLocation.get().set(player.getName(), player.getLocation());
-        ConfigManagerLocation.save();
+    public void saveDeathLocation(Player player) {
+        LDCore.locaitonsList.put(player.getUniqueId(), player.getLocation());
     }
-    public Location getdeathlocation(Player player) {
-        return (Location) ConfigManagerLocation.get().get(player.getName(), player.getLocation());
+
+    public Location getDeathLocation(Player player) {
+        return LDCore.locaitonsList.get(player.getUniqueId());
     }
-    public void resetdeathlocation(Player player) {
-        ConfigManagerLocation.get().set(player.getName(), null);
-        ConfigManagerLocation.save();
+
+    public void removeDeathLocation(Player player) {
+        LDCore.locaitonsList.remove(player.getUniqueId());
     }
 
     public String cause(Player player) {

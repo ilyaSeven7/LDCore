@@ -28,13 +28,13 @@ public class FFABack implements CommandExecutor {
                     if (LDCore.strikePracticeAPI.getFight(player).getArena().getName().equalsIgnoreCase("crystalffa")) {
 
 
-                        if (LDCore.uuids.contains(player.getUniqueId()) || deathlocationgetter.getdeathlocation(player) == null) {
+                        if (LDCore.uuids.contains(player.getUniqueId()) && deathlocationgetter.getDeathLocation(player) == null) {
                             player.sendMessage(getter.components("<red>You Can't Use /Back For Now!"));
                             return true;
                         }
                         player.sendMessage(getter.components("<green>You Teleported Back!"));
-                        player.teleport(deathlocationgetter.getdeathlocation(player));
-                        deathlocationgetter.resetdeathlocation(player);
+                        player.teleport(deathlocationgetter.getDeathLocation(player));
+                        deathlocationgetter.removeDeathLocation(player);
                         LDCore.uuids.add(player.getUniqueId());
 
                     }
