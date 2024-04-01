@@ -32,7 +32,7 @@ public class FFABack implements CommandExecutor {
                             player.sendMessage(getter.components("<red>You Can't Use /Back For Now!"));
                             return true;
                         }
-                        getter.components("<green>You Teleported Back!");
+                        player.sendMessage(getter.components("<green>You Teleported Back!"));
                         player.teleport(deathlocationgetter.getdeathlocation(player));
                         deathlocationgetter.resetdeathlocation(player);
                         LDCore.uuids.add(player.getUniqueId());

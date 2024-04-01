@@ -7,7 +7,7 @@ import me.litedeforged.ldcore.deathMessage.listeners.PlayerDeath;
 import me.litedeforged.ldcore.message.Components;
 import me.litedeforged.ldcore.nicknamechanger.NickNameCheck;
 import me.litedeforged.ldcore.practicepvp.commands.FFABack;
-import me.litedeforged.ldcore.practicepvp.SaveDeathLocation;
+import me.litedeforged.ldcore.practicepvp.ConfigManagerLocation;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -35,7 +35,7 @@ public final class LDCore extends JavaPlugin {
             getCommand("back").setExecutor(new FFABack());
         }
         ConfigManager.setup();
-        SaveDeathLocation.setup();
+        ConfigManagerLocation.setup();
         Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<green>Plugin Has Been Enabled!"));
         Bukkit.getPluginManager().registerEvents(new NickNameCheck(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerDeath(), this);

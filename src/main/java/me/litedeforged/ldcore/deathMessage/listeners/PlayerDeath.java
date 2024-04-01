@@ -3,7 +3,7 @@ package me.litedeforged.ldcore.deathMessage.listeners;
 import me.litedeforged.ldcore.LDCore;
 import me.litedeforged.ldcore.deathMessage.fileManager.ConfigManager;
 import me.litedeforged.ldcore.message.Components;
-import me.litedeforged.ldcore.practicepvp.SaveDeathLocation;
+import me.litedeforged.ldcore.practicepvp.ConfigManagerLocation;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Location;
@@ -20,7 +20,7 @@ public class PlayerDeath implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
-        SaveDeathLocation.save();
+        ConfigManagerLocation.save();
 
 
         Player player = event.getPlayer();
@@ -68,15 +68,15 @@ public class PlayerDeath implements Listener {
     }
 
     public void savedeathlocation(Player player) {
-        SaveDeathLocation.get().set(player.getName(), player.getLocation());
-        SaveDeathLocation.save();
+        ConfigManagerLocation.get().set(player.getName(), player.getLocation());
+        ConfigManagerLocation.save();
     }
     public Location getdeathlocation(Player player) {
-        return (Location) SaveDeathLocation.get().get(player.getName(), player.getLocation());
+        return (Location) ConfigManagerLocation.get().get(player.getName(), player.getLocation());
     }
     public void resetdeathlocation(Player player) {
-        SaveDeathLocation.get().set(player.getName(), null);
-        SaveDeathLocation.save();
+        ConfigManagerLocation.get().set(player.getName(), null);
+        ConfigManagerLocation.save();
     }
 
     public String cause(Player player) {
