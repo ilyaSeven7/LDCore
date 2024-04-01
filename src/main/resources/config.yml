@@ -9,3 +9,8 @@ NickName:
 #When A Player Joining The Server Check Their Rank If They Have It Skip And If Not Reset Their Name Into The Default.
 PlayerDeathLogger:
   toggle: true
+
+#For /Back Command In FFA Crystal On PracticePvP.
+PracticeBackCommand:
+  enable: true
+
