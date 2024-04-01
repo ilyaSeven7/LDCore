@@ -2,8 +2,11 @@ package me.litedeforged.ldcore.deathMessage.listeners;
 
 import me.litedeforged.ldcore.LDCore;
 import me.litedeforged.ldcore.deathMessage.fileManager.ConfigManager;
+import me.litedeforged.ldcore.message.Components;
+import me.litedeforged.ldcore.practicepvp.SaveDeathLocation;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,16 +16,19 @@ import java.time.LocalTime;
 
 public class PlayerDeath implements Listener {
 
+    Components getter = new Components();
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
+        SaveDeathLocation.save();
 
 
         Player player = event.getPlayer();
+        if (LDCore.strikePracticeAPI.getFight(player).getArena().getName().equalsIgnoreCase("crystalffa")) {
+            LDCore.uuids.remove(player.getUniqueId());
+            savedeathlocation(player);
+        }
 
-        LDCore.uuids.remove(player.getUniqueId());
-
-        ConfigManager.setup();
 
 
 //      #When A Player Die Send Dead Location For Them.
@@ -59,6 +65,18 @@ public class PlayerDeath implements Listener {
         String getZ = String.valueOf(player.getLocation().getBlockZ());
 
         return MiniMessage.miniMessage().deserialize("<aqua>You Died In<dark_gray>: " + "<light_purple>" + getworld + " <white>" + getX + "<dark_gray>-<white>X" + " <white>" + getY  + "<dark_gray>-<white>Y" + " <white>" + getZ  + "<dark_gray>-<white>Z");
+    }
+
+    public void savedeathlocation(Player player) {
+        SaveDeathLocation.get().set(player.getName(), player.getLocation());
+        SaveDeathLocation.save();
+    }
+    public Location getdeathlocation(Player player) {
+        return (Location) SaveDeathLocation.get().get(player.getName(), player.getLocation());
+    }
+    public void resetdeathlocation(Player player) {
+        SaveDeathLocation.get().set(player.getName(), null);
+        SaveDeathLocation.save();
     }
 
     public String cause(Player player) {
