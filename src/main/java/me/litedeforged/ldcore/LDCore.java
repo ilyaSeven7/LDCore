@@ -1,9 +1,13 @@
 package me.litedeforged.ldcore;
 
+import ga.strikepractice.StrikePractice;
+import ga.strikepractice.api.StrikePracticeAPI;
+import me.litedeforged.ldcore.deathMessage.fileManager.ConfigManager;
 import me.litedeforged.ldcore.deathMessage.listeners.PlayerDeath;
 import me.litedeforged.ldcore.message.Components;
 import me.litedeforged.ldcore.nicknamechanger.NickNameCheck;
-import me.litedeforged.ldcore.practiceapi.commands.FFABack;
+import me.litedeforged.ldcore.practicepvp.commands.FFABack;
+import me.litedeforged.ldcore.practicepvp.SaveDeathLocation;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -19,6 +23,7 @@ public final class LDCore extends JavaPlugin {
 
     public static List<UUID> uuids = new ArrayList<>();
 
+    public static StrikePracticeAPI strikePracticeAPI = StrikePractice.getAPI();
 
     Components getter = new Components();
     @Override
@@ -26,7 +31,11 @@ public final class LDCore extends JavaPlugin {
         instance = this;
         // Plugin startup logic
         saveDefaultConfig();
-        getCommand("back").setExecutor(new FFABack());
+        if (getConfig().getConfigurationSection("PracticeBackCommand").getBoolean("enable")) {
+            getCommand("back").setExecutor(new FFABack());
+        }
+        ConfigManager.setup();
+        SaveDeathLocation.setup();
         Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<green>Plugin Has Been Enabled!"));
         Bukkit.getPluginManager().registerEvents(new NickNameCheck(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerDeath(), this);
