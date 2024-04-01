@@ -12,6 +12,7 @@ import java.time.LocalDate;
 
 public class ConfigManager {
 
+
     private static File file;
 
     public static void setup() {
