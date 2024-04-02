@@ -6,10 +6,9 @@ import me.litedeforged.ldcore.deathMessage.fileManager.ConfigManager;
 import me.litedeforged.ldcore.deathMessage.listeners.PlayerDeath;
 import me.litedeforged.ldcore.message.Components;
 import me.litedeforged.ldcore.nicknamechanger.NickNameCheck;
-import me.litedeforged.ldcore.practicepvp.commands.FFABack;
+import me.litedeforged.ldcore.practicepvp.commands.FFALastDeathLocation;
 import me.litedeforged.ldcore.practicepvp.ConfigManagerLocation;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
@@ -22,8 +21,6 @@ public final class LDCore extends JavaPlugin {
 
     public static List<UUID> uuids = new ArrayList<>();
 
-    public static Map<UUID, Location> locaitonsList = new HashMap<>();
-
     public static StrikePracticeAPI strikePracticeAPI = StrikePractice.getAPI();
 
     Components getter = new Components();
@@ -33,9 +30,9 @@ public final class LDCore extends JavaPlugin {
         // Plugin startup logic
         saveDefaultConfig();
         if (getConfig().getConfigurationSection("PracticeBackCommand").getBoolean("enable")) {
-            getCommand("back").setExecutor(new FFABack());
+            getCommand("lastdeathlocation").setExecutor(new FFALastDeathLocation());
         }
-        strikePracticeAPI.getArena("crystalffa").setCustomMaxChangesPerTick(500);
+        strikePracticeAPI.getArena("crystalffa").setCustomMaxChangesPerTick(10);
         ConfigManager.setup();
         ConfigManagerLocation.setup();
         Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<green>Plugin Has Been Enabled!"));
@@ -48,4 +45,7 @@ public final class LDCore extends JavaPlugin {
         // Plugin shutdown logic
         Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<red>Plugin Has Been Disabled"));
     }
+
+
+
 }

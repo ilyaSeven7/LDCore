@@ -4,29 +4,34 @@ import me.litedeforged.ldcore.LDCore;
 import me.litedeforged.ldcore.deathMessage.fileManager.ConfigManager;
 import me.litedeforged.ldcore.message.Components;
 import me.litedeforged.ldcore.practicepvp.ConfigManagerLocation;
+import me.litedeforged.ldcore.practicepvp.StrikePracticeMethods;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.time.LocalTime;
-
 public class PlayerDeath implements Listener {
 
-    Components getter = new Components();
+    StrikePracticeMethods spMethods = new StrikePracticeMethods();
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         ConfigManagerLocation.save();
+        if (event.getPlayer() == null) return;
+        if (spMethods.getFight(event.getPlayer()) == null) return;
 
 
         Player player = event.getPlayer();
-        if (LDCore.strikePracticeAPI.getFight(player).getArena().getName().equalsIgnoreCase("crystalffa")) {
+
+
+
+
+        if (spMethods.getFight(player).getArena().getName().equalsIgnoreCase("crystalffa")) {
             LDCore.uuids.remove(player.getUniqueId());
-            saveDeathLocation(player);
+            spMethods.saveDeathLocation(player);
         }
 
 //      #When A Player Die Send Dead Location For Them.
@@ -63,18 +68,6 @@ public class PlayerDeath implements Listener {
         String getZ = String.valueOf(player.getLocation().getBlockZ());
 
         return MiniMessage.miniMessage().deserialize("<aqua>You Died In<dark_gray>: " + "<light_purple>" + getworld + " <white>" + getX + "<dark_gray>-<white>X" + " <white>" + getY  + "<dark_gray>-<white>Y" + " <white>" + getZ  + "<dark_gray>-<white>Z");
-    }
-
-    public void saveDeathLocation(Player player) {
-        LDCore.locaitonsList.put(player.getUniqueId(), player.getLocation());
-    }
-
-    public Location getDeathLocation(Player player) {
-        return LDCore.locaitonsList.get(player.getUniqueId());
-    }
-
-    public void removeDeathLocation(Player player) {
-        LDCore.locaitonsList.remove(player.getUniqueId());
     }
 
     public String cause(Player player) {
