@@ -6,5 +6,5 @@ depend:
   - Essentials
   - StrikePractice
 commands:
-  back:
-    permission: 'ldcore.practicepvp.commands.back'
+  lastdeathlocation:
+    permission: 'ldcore.practicepvp.commands.lastdeathlocation'
