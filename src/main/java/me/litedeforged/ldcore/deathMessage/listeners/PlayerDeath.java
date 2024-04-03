@@ -2,7 +2,6 @@ package me.litedeforged.ldcore.deathMessage.listeners;
 
 import me.litedeforged.ldcore.LDCore;
 import me.litedeforged.ldcore.deathMessage.fileManager.ConfigManager;
-import me.litedeforged.ldcore.message.Components;
 import me.litedeforged.ldcore.practicepvp.ConfigManagerLocation;
 import me.litedeforged.ldcore.practicepvp.StrikePracticeMethods;
 import net.kyori.adventure.text.Component;
@@ -20,14 +19,11 @@ public class PlayerDeath implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         ConfigManagerLocation.save();
+
         if (event.getPlayer() == null) return;
-        if (spMethods.getFight(event.getPlayer()) == null) return;
 
 
         Player player = event.getPlayer();
-
-
-
 
         if (spMethods.getFight(player).getArena().getName().equalsIgnoreCase("crystalffa")) {
             LDCore.uuids.remove(player.getUniqueId());
