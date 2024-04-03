@@ -8,7 +8,6 @@ import me.litedeforged.ldcore.message.Components;
 import me.litedeforged.ldcore.nicknamechanger.NickNameCheck;
 import me.litedeforged.ldcore.practicepvp.commands.ArenaRollback;
 import me.litedeforged.ldcore.practicepvp.commands.FFALastDeathLocation;
-import me.litedeforged.ldcore.practicepvp.ConfigManagerLocation;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -41,7 +40,6 @@ public final class LDCore extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new NickNameCheck(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerDeath(), this);
         ConfigManager.setup();
-//        ConfigManagerLocation.setup();
     }
 
     @Override

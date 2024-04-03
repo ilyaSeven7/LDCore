@@ -40,7 +40,7 @@ public class StrikePracticeMethods {
                 player.sendMessage(mini.components("<red>Arena Not Exist!"));
                 return;
         }
-        player.sendMessage(mini.components("<light_purple>Arena Reset Speed Changed To <aqua>") + String.valueOf(tick));
+        player.sendMessage(mini.components("<light_purple>Arena Reset Speed Changed!"));
         spAPI.getArena(arenaName).setCustomMaxChangesPerTick(tick);
     }
 }

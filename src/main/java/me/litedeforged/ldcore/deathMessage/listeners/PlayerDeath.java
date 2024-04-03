@@ -2,7 +2,6 @@ package me.litedeforged.ldcore.deathMessage.listeners;
 
 import me.litedeforged.ldcore.LDCore;
 import me.litedeforged.ldcore.deathMessage.fileManager.ConfigManager;
-import me.litedeforged.ldcore.practicepvp.ConfigManagerLocation;
 import me.litedeforged.ldcore.practicepvp.StrikePracticeMethods;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -18,7 +17,6 @@ public class PlayerDeath implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
-        ConfigManagerLocation.save();
 
         if (event.getPlayer() == null) return;
 
