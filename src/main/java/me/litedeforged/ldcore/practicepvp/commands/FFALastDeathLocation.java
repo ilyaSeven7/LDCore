@@ -25,7 +25,7 @@ public class FFALastDeathLocation implements CommandExecutor {
                 if (args.length == 0) {
                     assert player != null;
                     if (!spMethods.getFight(player).getArena().getName().equalsIgnoreCase("crystalffa")) {
-                        player.sendMessage(getter.components("<red>You Can Only Use This Command On FFa Crystal Mode"));
+                        player.sendMessage(getter.components("<red>You Can Only Use This Command On FFa Crystal Mode!"));
                         return true;
                     }
 
