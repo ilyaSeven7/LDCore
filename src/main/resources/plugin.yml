@@ -8,3 +8,5 @@ depend:
 commands:
   lastdeathlocation:
     permission: 'ldcore.practicepvp.commands.lastdeathlocation'
+  changerollbackspeed:
+    permission: 'ldcore.practicepvp.commands.changerollbackspeed'
