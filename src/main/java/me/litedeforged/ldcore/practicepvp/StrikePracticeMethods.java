@@ -35,12 +35,23 @@ public class StrikePracticeMethods {
         return spAPI.getFight(player);
     }
 
+
     public void getArena(Player player, String arenaName, int tick) {
         if (spAPI.getArena(arenaName) == null) {
-                player.sendMessage(mini.components("<red>Arena Not Exist!"));
-                return;
+            player.sendMessage(mini.components("<red>Arena Not Exist!"));
+            return;
         }
         player.sendMessage(mini.components("<light_purple>Arena Reset Speed Changed!"));
         spAPI.getArena(arenaName).setCustomMaxChangesPerTick(tick);
     }
+
+    public Boolean isInt(String text) {
+        try {
+            Integer.parseInt(text);
+        }catch (NumberFormatException e){
+            return false;
+        }
+        return true;
+    }
+
 }
