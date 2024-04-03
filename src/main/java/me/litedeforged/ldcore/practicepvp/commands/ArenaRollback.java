@@ -23,8 +23,7 @@ public class ArenaRollback implements CommandExecutor {
             }
             if (args.length < 3) {
 
-                if (Integer.parseInt(args[1]) <= 10000) {
-
+                if (spMethods.isInt(args[1])) {
 
                     spMethods.getArena(player, args[0], Integer.parseInt(args[1]));
                     return true;
