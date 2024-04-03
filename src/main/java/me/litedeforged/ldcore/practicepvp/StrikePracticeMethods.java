@@ -3,6 +3,7 @@ package me.litedeforged.ldcore.practicepvp;
 import ga.strikepractice.StrikePractice;
 import ga.strikepractice.api.StrikePracticeAPI;
 import ga.strikepractice.fights.Fight;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -30,5 +31,13 @@ public class StrikePracticeMethods {
 
     public Fight getFight(Player player) {
         return spAPI.getFight(player);
+    }
+
+    public void getArena(Player player, String arenaName, int tick) {
+        if (spAPI.getArena(arenaName) == null) {
+                player.sendMessage(MiniMessage.miniMessage().deserialize("<red>Arena Not Exist!"));
+                return;
+        }
+        spAPI.getArena(arenaName).setCustomMaxChangesPerTick(tick);
     }
 }
