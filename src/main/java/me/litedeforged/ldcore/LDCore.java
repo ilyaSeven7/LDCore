@@ -6,6 +6,7 @@ import me.litedeforged.ldcore.deathMessage.fileManager.ConfigManager;
 import me.litedeforged.ldcore.deathMessage.listeners.PlayerDeath;
 import me.litedeforged.ldcore.message.Components;
 import me.litedeforged.ldcore.nicknamechanger.NickNameCheck;
+import me.litedeforged.ldcore.practicepvp.commands.ArenaRollback;
 import me.litedeforged.ldcore.practicepvp.commands.FFALastDeathLocation;
 import me.litedeforged.ldcore.practicepvp.ConfigManagerLocation;
 import org.bukkit.Bukkit;
@@ -29,15 +30,18 @@ public final class LDCore extends JavaPlugin {
         instance = this;
         // Plugin startup logic
         saveDefaultConfig();
+
+
         if (getConfig().getConfigurationSection("PracticeBackCommand").getBoolean("enable")) {
             getCommand("lastdeathlocation").setExecutor(new FFALastDeathLocation());
         }
-        strikePracticeAPI.getArena("crystalffa").setCustomMaxChangesPerTick(10);
-        ConfigManager.setup();
-        ConfigManagerLocation.setup();
+
+        getCommand("changerollbackspeed").setExecutor(new ArenaRollback());
         Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<green>Plugin Has Been Enabled!"));
         Bukkit.getPluginManager().registerEvents(new NickNameCheck(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerDeath(), this);
+        ConfigManager.setup();
+//        ConfigManagerLocation.setup();
     }
 
     @Override
