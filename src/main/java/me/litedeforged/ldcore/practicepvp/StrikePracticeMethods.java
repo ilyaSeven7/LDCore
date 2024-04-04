@@ -3,7 +3,8 @@ package me.litedeforged.ldcore.practicepvp;
 import ga.strikepractice.StrikePractice;
 import ga.strikepractice.api.StrikePracticeAPI;
 import ga.strikepractice.fights.Fight;
-import me.litedeforged.ldcore.message.Components;
+import ga.strikepractice.party.Party;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
