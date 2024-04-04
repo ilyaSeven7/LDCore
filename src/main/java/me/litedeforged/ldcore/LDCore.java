@@ -36,6 +36,7 @@ public final class LDCore extends JavaPlugin {
         }
 
         getCommand("changerollbackspeed").setExecutor(new ArenaRollback());
+        getCommand("partylimit").setExecutor(new PartyLimit());
         Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<green>Plugin Has Been Enabled!"));
         Bukkit.getPluginManager().registerEvents(new NickNameCheck(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerDeath(), this);

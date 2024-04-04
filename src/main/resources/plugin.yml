@@ -10,3 +10,5 @@ commands:
     permission: 'ldcore.practicepvp.commands.lastdeathlocation'
   changerollbackspeed:
     permission: 'ldcore.practicepvp.commands.changerollbackspeed'
+  partylimit:
+    permission: 'ldcore.practicepvp.commands.partylimit'
