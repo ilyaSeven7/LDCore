@@ -18,10 +18,10 @@ public class PlayerDeath implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
 
-        if (event.getPlayer() == null) return;
-
-
         Player player = event.getPlayer();
+
+        if (spMethods.getFight(player) == null) return;
+
 
         if (spMethods.getFight(player).getArena().getName().equalsIgnoreCase("crystalffa")) {
             LDCore.uuids.remove(player.getUniqueId());
