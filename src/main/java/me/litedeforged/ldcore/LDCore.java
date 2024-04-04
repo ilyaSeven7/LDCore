@@ -35,8 +35,11 @@ public final class LDCore extends JavaPlugin {
             getCommand("lastdeathlocation").setExecutor(new FFALastDeathLocation());
         }
 
-        getCommand("changerollbackspeed").setExecutor(new ArenaRollback());
+        getCommand("changerollbackspeed").setExecutor(new ArenaRollbackTick());
         getCommand("partylimit").setExecutor(new PartyLimit());
+        getCommand("forcearenarollback").setExecutor(new ForceArenaRollback());
+
+
         Bukkit.getServer().getConsoleSender().sendMessage(getter.components("<green>Plugin Has Been Enabled!"));
         Bukkit.getPluginManager().registerEvents(new NickNameCheck(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerDeath(), this);
