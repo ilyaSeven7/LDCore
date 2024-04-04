@@ -1,13 +1,13 @@
 package me.litedeforged.ldcore;
 
-import ga.strikepractice.StrikePractice;
-import ga.strikepractice.api.StrikePracticeAPI;
 import me.litedeforged.ldcore.deathMessage.fileManager.ConfigManager;
 import me.litedeforged.ldcore.deathMessage.listeners.PlayerDeath;
 import me.litedeforged.ldcore.message.Components;
 import me.litedeforged.ldcore.nicknamechanger.NickNameCheck;
-import me.litedeforged.ldcore.practicepvp.commands.ArenaRollback;
+import me.litedeforged.ldcore.practicepvp.commands.ArenaRollbackTick;
 import me.litedeforged.ldcore.practicepvp.commands.FFALastDeathLocation;
+import me.litedeforged.ldcore.practicepvp.commands.ForceArenaRollback;
+import me.litedeforged.ldcore.practicepvp.commands.PartyLimit;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,8 +20,6 @@ public final class LDCore extends JavaPlugin {
     public static LDCore getInstance() {return instance;}
 
     public static List<UUID> uuids = new ArrayList<>();
-
-    public static StrikePracticeAPI strikePracticeAPI = StrikePractice.getAPI();
 
     Components getter = new Components();
     @Override
