@@ -21,6 +21,8 @@ public final class LDCore extends JavaPlugin {
 
     public static List<UUID> uuids = new ArrayList<>();
 
+    FFaArenaRollbackTimer spRollBackPerTick = new FFaArenaRollbackTimer();
+
     Components getter = new Components();
     @Override
     public void onEnable() {
@@ -28,6 +30,7 @@ public final class LDCore extends JavaPlugin {
         // Plugin startup logic
         saveDefaultConfig();
 
+        spRollBackPerTick.resetFFAPerTick();
 
         if (getConfig().getConfigurationSection("PracticeBackCommand").getBoolean("enable")) {
             getCommand("lastdeathlocation").setExecutor(new FFALastDeathLocation());
