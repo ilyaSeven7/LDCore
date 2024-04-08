@@ -1,7 +1,10 @@
 package me.litedeforged.ldcore.practicepvp.commands;
 
+import me.litedeforged.ldcore.LDCore;
 import me.litedeforged.ldcore.message.Components;
+import me.litedeforged.ldcore.practicepvp.FFaArenaRollbackTimer;
 import me.litedeforged.ldcore.practicepvp.StrikePracticeMethods;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,6 +16,8 @@ public class ArenaRollbackTick implements CommandExecutor {
     StrikePracticeMethods spMethods = new StrikePracticeMethods();
 
     Components mini = new Components();
+
+    FFaArenaRollbackTimer spRollBackPerTick = new FFaArenaRollbackTimer();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
@@ -33,9 +38,14 @@ public class ArenaRollbackTick implements CommandExecutor {
                     return false;
 
                 }else {
-                    String arenaChangedMs = "<light_purple>Arena RollBack Speed Changed To <aqua>" + args[1];
-                    player.sendMessage(mini.components(arenaChangedMs));
-                    spMethods.getArena(args[0]).setCustomMaxChangesPerTick(spMethods.isInt(args[1]));
+                    Bukkit.getScheduler().cancelTasks(LDCore.getInstance());
+                    player.sendMessage(mini.components("<aqua>ᴀʀᴇɴᴀ ʀᴏʟʟʙᴀᴄᴋ sᴘᴇᴇᴅ ᴄʜᴀɴɢᴇᴅ<dark_gray>: <red>" + spMethods.getConfigSec("PracticePvPSystem").getInt("FFaResetSpeed") / 60 + "<dark_gray> >>> <green>" + Integer.parseInt(args[1])));
+                    player.sendMessage(mini.components("<red>ᴀʀᴇɴᴀ ʀᴇsᴛᴀʀᴛ ᴇᴠᴇʀʏ <white>" + Integer.parseInt(args[1]) + "<red> ᴍɪɴᴜᴛᴇ!"));
+                    spMethods.getConfigSec("PracticePvPSystem").set("FFaResetSpeed", Integer.parseInt(args[1]) * 60);
+                    LDCore.getInstance().saveConfig();
+                    LDCore.getInstance().reloadConfig();
+                    spRollBackPerTick.resetFFAPerTick();
+
 
                     return true;
                 }
