@@ -53,13 +53,6 @@ public class StrikePracticeMethods {
         return player;
     }
 
-    public Player stringPlayerIntoPlayer(String player) {
-        if (Bukkit.getPlayer(player) == null) {
-            return null;
-        }
-        return Bukkit.getPlayer(player);
-    }
-
     public Arena getArena(String arenaName) {
         if (spAPI.getArena(arenaName) == null) {
             return null;
