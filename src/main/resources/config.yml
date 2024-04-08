@@ -10,9 +10,10 @@ NickName:
 PlayerDeathLogger:
   toggle: true
 
-#For /Back Command In FFA Crystal On PracticePvP.
-PracticeBackCommand:
-  enable: true
 #PracticePvP System Environment.
 PracticePvPSystem:
+  DeathLocationTracker: true
+  FFaResetSpeed: 10
+  FFaResetTimerMessage: 60
+  ShieldDamagerBreakSound: "ITEM_SHIELD_BREAK"
 
