@@ -83,6 +83,16 @@ public class StrikePracticeMethods {
         return spAPI.getArena(arenaName).getCurrentFight().getPlayersInFight();
     }
 
+    public void getPlayerLastEditedKit(Player getPlayer) {
+        BattleKit playerKit = spAPI.getFight(getPlayer).getKit();
+        BattleKit getLastKit = spAPI.getLastSelectedEditedKit(getPlayer);
+        if (getLastKit != null) {
+            playerKit.giveKitStuff(getPlayer, playerKit);
+        }else {
+            playerKit.giveKitStuff(getPlayer, spAPI.getKit(playerKit.getName()));
+        }
+    }
+
 
     public Party partyExist(Player player) {
         if (spAPI.getParty(player) == null) {
