@@ -22,7 +22,7 @@ public class PartyLimit implements CommandExecutor {
                 player.sendMessage(mini.components("<red>Command Usage<dark_gray>: <gray>/<white>PartyLimit <dark_gray>(<white>Number<dark_gray>)"));
                 return false;
             }
-            if (args.length == 1 && spMethods.isInt(args[0]) <= 20) {
+            if (args.length == 1 && spMethods.isInt(args[0]) <= 15) {
                 if (spMethods.partyExist(player) == null) {
                     player.sendMessage(mini.components("<red>You Must Have a Party To Do This!"));
                     return false;
