@@ -28,7 +28,7 @@ public class ForceArenaRollback implements CommandExecutor {
             if (args.length < 2) {
                 player.sendMessage(mini.components("<aqua>Rollback SuccessFully, All Player SuccessFully Teleported Into The Spawn."));
                 spMethods.getArena(args[0]).quickRollback();
-                spMethods.getPlayersInArena(args[0]).forEach(finders -> finders.teleport(spMethods.getArena(args[0]).getCenter()));
+                spMethods.getPlayersInArena(args[0]).forEach(playerList -> playerList.teleport(spMethods.getArena(args[0]).getCenter()));
             }
 
         }
