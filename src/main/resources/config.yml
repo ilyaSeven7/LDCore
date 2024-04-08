@@ -15,5 +15,4 @@ PracticePvPSystem:
   DeathLocationTracker: true
   FFaResetSpeed: 10
   FFaResetTimerMessage: 60
-  ShieldDamagerBreakSound: "ITEM_SHIELD_BREAK"
 

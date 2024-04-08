@@ -81,8 +81,11 @@ public class StrikePracticeMethods {
         BattleKit getLastKit = spAPI.getLastSelectedEditedKit(getPlayer);
         if (getLastKit != null) {
             playerKit.giveKitStuff(getPlayer, getLastKit);
+
         }else {
-            playerKit.giveKitStuff(getPlayer, spAPI.getKit(playerKit.getName()));
+            String kitName = playerKit.getName();
+            BattleKit getKit = spAPI.getKit(kitName);
+            playerKit.giveKitStuff(getPlayer, getKit);
         }
     }
 

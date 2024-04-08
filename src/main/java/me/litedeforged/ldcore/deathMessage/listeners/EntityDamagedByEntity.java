@@ -29,7 +29,7 @@ public class EntityDamagedByEntity implements Listener {
 
         if (damager.getEquipment().getItemInMainHand().getType().toString().toLowerCase().contains("axe") && player.isBlocking() && (int) event.getFinalDamage() == 0) {
 
-            damager.playSound(damager.getLocation(), (Sound) LDCore.getInstance().getConfig().getConfigurationSection("PracticePvPSystem").get("ShieldDamagerBreakSound"), 1, 0);
+            damager.playSound(damager.getLocation(), Sound.ITEM_SHIELD_BREAK, 1, 0);
         }
     }
 
