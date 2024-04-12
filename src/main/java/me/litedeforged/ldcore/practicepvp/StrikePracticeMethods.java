@@ -44,14 +44,8 @@ public class StrikePracticeMethods {
         }
         return spAPI.getFight(player);
     }
-    
 
-    public Player playerExist(Player player) {
-        if (player == null) {
-            return null;
-        }
-        return player;
-    }
+
 
     public Arena getArena(String arenaName) {
         if (spAPI.getArena(arenaName) == null) {
