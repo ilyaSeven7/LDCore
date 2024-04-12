@@ -1,4 +1,4 @@
-package me.litedeforged.ldcore.nicknamechanger;
+package me.litedeforged.ldcore.chatSystem;
 
 import com.earth2me.essentials.Essentials;
 import me.litedeforged.ldcore.LDCore;

@@ -1,4 +1,4 @@
-package me.litedeforged.ldcore.deathMessage.listeners;
+package me.litedeforged.ldcore.listeners;
 
 import me.litedeforged.ldcore.LDCore;
 import me.litedeforged.ldcore.deathMessage.fileManager.ConfigManager;

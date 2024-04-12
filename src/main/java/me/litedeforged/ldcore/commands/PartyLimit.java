@@ -1,4 +1,4 @@
-package me.litedeforged.ldcore.practicepvp.commands;
+package me.litedeforged.ldcore.commands;
 
 import me.litedeforged.ldcore.message.Components;
 import me.litedeforged.ldcore.practicepvp.StrikePracticeMethods;
