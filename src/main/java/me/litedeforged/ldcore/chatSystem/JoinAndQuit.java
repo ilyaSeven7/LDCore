@@ -31,7 +31,9 @@ public class JoinAndQuit {
         return player.hasPermission("group." + group);
     }
 
-    public static List<UUID> joinedList = new ArrayList<>();
+    public static List<UUID> liteDeforgedPlayerList = new ArrayList<>();
+    public static List<UUID> demonPlayerList = new ArrayList<>();
+    public static List<UUID> angelPlayerList = new ArrayList<>();
 
 
     public static void onPlayerJoined() {
@@ -49,11 +51,11 @@ public class JoinAndQuit {
         if (groupCheck(player, "litedeforged")) {
             playerJoinEvent().joinMessage(mini.components("<white>" + player.getName() + " <light_purple><bold>ʜᴀs ʙᴇᴇɴ ᴊᴏɪɴᴇᴅ!"));
             getServer.sendActionBar(mini.components("<white>" + player.getName() + " <light_purple>ʜᴀs ʙᴇᴇɴ ᴊᴏɪɴᴇᴅ!"));
-            if (!joinedList.contains(player.getUniqueId())) {
-                joinedList.add(player.getUniqueId());
+            if (!liteDeforgedPlayerList.contains(player.getUniqueId())) {
+                liteDeforgedPlayerList.add(player.getUniqueId());
                 Bukkit.getServer().getOnlinePlayers().forEach(playerList -> playerList.playSound(playerList.getLocation(), Sound.ENTITY_LIGHTNING_BOLT_IMPACT, 1, 1));
                 Bukkit.getScheduler().runTaskLater(LDCore.getInstance(), removePlayer -> {
-                    joinedList.remove(player.getUniqueId());
+                    liteDeforgedPlayerList.remove(player.getUniqueId());
                 },(120 * 60) * 20);
                 return;
             }
@@ -62,11 +64,11 @@ public class JoinAndQuit {
         if (groupCheck(player, "demon")) {
             playerJoinEvent().joinMessage(mini.components("<white>" + player.getName() + " <red><bold>ʜᴀs ʙᴇᴇɴ ᴊᴏɪɴᴇᴅ!"));
             getServer.sendActionBar(mini.components("<white>" + player.getName() + " <red>ʜᴀs ʙᴇᴇɴ ᴊᴏɪɴᴇᴅ!"));
-            if (!joinedList.contains(player.getUniqueId())) {
-                joinedList.add(player.getUniqueId());
+            if (!demonPlayerList.contains(player.getUniqueId())) {
+                demonPlayerList.add(player.getUniqueId());
                 Bukkit.getServer().getOnlinePlayers().forEach(playerList -> playerList.playSound(playerList.getLocation(), Sound.ENTITY_BLAZE_AMBIENT, 1, 1));
                 Bukkit.getScheduler().runTaskLater(LDCore.getInstance(), removePlayer -> {
-                    joinedList.remove(player.getUniqueId());
+                    demonPlayerList.remove(player.getUniqueId());
                 },(120 * 60) * 20);
                 return;
             }
@@ -75,11 +77,11 @@ public class JoinAndQuit {
         if (groupCheck(player, "angel")) {
             playerJoinEvent().joinMessage(mini.components("<white>" + player.getName() + " <white><bold>ʜᴀs ʙᴇᴇɴ ᴊᴏɪɴᴇᴅ!"));
             getServer.sendActionBar(mini.components("<white>" + player.getName() + " <white>ʜᴀs ʙᴇᴇɴ ᴊᴏɪɴᴇᴅ!"));
-            if (!joinedList.contains(player.getUniqueId())) {
-                joinedList.add(player.getUniqueId());
+            if (!angelPlayerList.contains(player.getUniqueId())) {
+                angelPlayerList.add(player.getUniqueId());
                 Bukkit.getServer().getOnlinePlayers().forEach(playerList -> playerList.playSound(playerList.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_HIT, 1, 1));
                 Bukkit.getScheduler().runTaskLater(LDCore.getInstance(), removePlayer -> {
-                    joinedList.remove(player.getUniqueId());
+                    angelPlayerList.remove(player.getUniqueId());
                 },(120 * 60) * 20);
                 return;
             }
