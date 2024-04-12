@@ -1,5 +1,6 @@
 package me.litedeforged.ldcore.practicepvp;
 
+import ga.strikepractice.fights.Fight;
 import me.litedeforged.ldcore.LDCore;
 import me.litedeforged.ldcore.message.Components;
 
@@ -35,14 +36,16 @@ public class FFaArenaRollbackTimer {
 
             if (TIMER[0] == 0) {
 
+
                 spMethods.getPlayersInArena("crystalffa").forEach(playerList -> playerList.teleport(spMethods.getArena("crystalffa").getCenter()));
                 spMethods.getPlayersInArena("crystalffa").forEach(playerList -> playerList.getInventory().clear());
                 spMethods.getPlayersInArena("crystalffa").forEach(playerList -> playerList.playSound(playerList.getLocation(), Sound.BLOCK_ANVIL_USE, 1, 0));
                 spMethods.getPlayersInArena("crystalffa").forEach(playerList -> playerList.sendMessage(mini.components("<green>ʀᴇsᴇᴛ ᴀʀᴇɴᴀ sᴜᴄᴄᴇssғᴜʟʟʏ!")));
 
 
-
+                spMethods.getPlayersInArena("crystalffa").forEach(playerList -> LDCore.uuids.add(playerList.getUniqueId()));
                 spMethods.getPlayersInArena("crystalffa").forEach(playerList -> spMethods.getPlayerLastEditedKit(playerList));
+                spMethods.getArena("crystalffa").setCustomMaxChangesPerTick(1000);
                 spMethods.getArena("crystalffa").quickRollback();
 
 
