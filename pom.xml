@@ -90,5 +90,12 @@
           <scope>system</scope>
           <systemPath>${project.basedir}/strikepractice-api.jar</systemPath>
       </dependency>
+      <dependency>
+          <groupId>us.ajg0702</groupId>
+          <artifactId>ajUtils</artifactId>
+          <version>1.0.0</version>
+          <scope>system</scope>
+          <systemPath>${project.basedir}/ajParkour-2.12.10.jar</systemPath>
+      </dependency>
   </dependencies>
 </project>
