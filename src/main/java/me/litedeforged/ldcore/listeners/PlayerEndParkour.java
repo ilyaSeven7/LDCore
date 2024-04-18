@@ -16,8 +16,7 @@ public class PlayerEndParkour implements Listener {
     public void onPlayerEndParkour(PlayerEndParkourEvent event) {
         Player player = event.getPlayer();
 
-        if (!spAPI.isInQueue(player) && !(PlayerStartParkour.storePlayerKit.get(player.getUniqueId()) == null)) {
-            System.out.println("test");
+        if (!spAPI.isInQueue(player) && PlayerStartParkour.storePlayerKit.get(player.getUniqueId()) != null) {
             spAPI.joinQueue(player, PlayerStartParkour.storePlayerKit.get(player.getUniqueId()));
             PlayerStartParkour.storePlayerKit.remove(player.getUniqueId());
         }
