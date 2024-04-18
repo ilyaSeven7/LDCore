@@ -20,12 +20,11 @@ public class PlayerDeath implements Listener {
 
         Player player = event.getPlayer();
 
-        if (spMethods.getFight(player) == null) return;
+        if (spMethods.getFight(player) == null || cause(player).equalsIgnoreCase("SUFFOCATION")) return;
 
 
-        if (spMethods.getFight(player).getArena().getName().equalsIgnoreCase("crystalffa")) {
-            LDCore.uuids.remove(player.getUniqueId());
-            spMethods.saveDeathLocation(player);
+        if (spMethods.getFight(player).getArena().getName().equalsIgnoreCase("crystalffa") && StrikePracticeMethods.deathLocationStore.get(player.getUniqueId()) == null) {
+            StrikePracticeMethods.deathLocationStore.put(player.getUniqueId(), player.getLocation());
         }
 
 //      #When A Player Die Send Dead Location For Them.
@@ -40,7 +39,6 @@ public class PlayerDeath implements Listener {
                     " (" + player.getName() + " Has Slayed by " + killer(player) + ")" + " (DeathReason » " + cause(player) + ")" +
                     " (WorldName » " + player.getLocation().getWorld().getName() + ")" +
                     " (CordLocation » " + coord(player) + ")"); // end of line
-
         }
 
     }

@@ -1,6 +1,5 @@
 package me.litedeforged.ldcore.commands;
 
-import me.litedeforged.ldcore.LDCore;
 import me.litedeforged.ldcore.message.Components;
 import me.litedeforged.ldcore.practicepvp.StrikePracticeMethods;
 import org.bukkit.command.Command;
@@ -12,38 +11,29 @@ import org.jetbrains.annotations.NotNull;
 
 public class FFALastDeathLocation implements CommandExecutor {
 
-
-    Components getter = new Components();
-
+    Components mini = new Components();
     StrikePracticeMethods spMethods = new StrikePracticeMethods();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
 
-            if (sender instanceof Player) {
-                Player player = ((Player) sender).getPlayer();
+            if (sender instanceof Player player) {
                 if (args.length == 0) {
-                    assert player != null;
                     if (!spMethods.getFight(player).getArena().getName().equalsIgnoreCase("crystalffa")) {
-                        player.sendMessage(getter.components("<red>You Can Only Use This Command On FFa Crystal Mode!"));
+                        player.sendMessage(mini.components("<red>You Can't Use Back For Now!"));
+                        return true;
+                    }
+                    if (StrikePracticeMethods.deathLocationStore.get(player.getUniqueId()) != null) {
+                        StrikePracticeMethods.deathLocationStore.remove(player.getUniqueId());
+                        player.sendMessage(mini.components("<green>You Teleported Back!"));
+                        player.teleport(StrikePracticeMethods.deathLocationStore.get(player.getUniqueId()));
                         return true;
                     }
 
-                    if (spMethods.getFight(player).getArena().getName().equalsIgnoreCase("crystalffa")) {
-
-                        if (LDCore.uuids.contains(player.getUniqueId()) && spMethods.getDeathLocation(player) == null) {
-                            player.sendMessage(getter.components("<red>You Can't Use Back For Now!"));
-                            return true;
-                        }
-                        player.sendMessage(getter.components("<green>You Teleported Back!"));
-                        player.teleport(spMethods.getDeathLocation(player));
-                        spMethods.removeDeathLocation(player);
-                        LDCore.uuids.add(player.getUniqueId());
-
-                    }
+                    player.sendMessage(mini.components("<red>You Can Use This Command One Time After You Died!"));
+                    return true;
                 }
             }
-
         return false;
     }
 

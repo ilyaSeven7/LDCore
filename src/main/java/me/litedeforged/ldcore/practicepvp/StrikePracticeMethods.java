@@ -15,28 +15,15 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 public class StrikePracticeMethods {
 
     Components mini = new Components();
 
-    private static final Map<UUID, Location> locaitonsList = new HashMap<>();
-
     private static final StrikePracticeAPI spAPI = StrikePractice.getAPI();
 
-    public void saveDeathLocation(Player player) {
-        locaitonsList.put(player.getUniqueId(), player.getLocation());
-    }
-
-    public Location getDeathLocation(Player player) {
-        return locaitonsList.get(player.getUniqueId());
-    }
-
-    public void removeDeathLocation(Player player) {
-        locaitonsList.remove(player.getUniqueId());
-    }
+    public final static HashMap<UUID, Location> deathLocationStore = new HashMap<>();
 
     public Fight getFight(Player player) {
         if (spAPI.getFight(player) == null) {
@@ -44,7 +31,6 @@ public class StrikePracticeMethods {
         }
         return spAPI.getFight(player);
     }
-
 
 
     public Arena getArena(String arenaName) {
