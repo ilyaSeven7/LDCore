@@ -9,12 +9,10 @@ import me.litedeforged.ldcore.practicepvp.FFaArenaRollbackTimer;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.*;
 
 public final class LDCore extends JavaPlugin {
     public static LDCore getInstance() {return instance;}
     private static LDCore instance;
-    public static List<UUID> uuids = new ArrayList<>();
 
     FFaArenaRollbackTimer spRollBackPerTick = new FFaArenaRollbackTimer();
 
@@ -47,6 +45,7 @@ public final class LDCore extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EntityDamagedByEntity(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerStartParkour(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerEndParkour(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerDamage(), this);
         ConfigManager.setup();
     }
 
