@@ -10,9 +10,6 @@ import java.util.List;
 
 public class FFaArenaRollbackTimer {
 
-
-
-
     StrikePracticeMethods spMethods = new StrikePracticeMethods();
 
     Components mini = new Components();
@@ -22,7 +19,7 @@ public class FFaArenaRollbackTimer {
     public void resetFFAPerTick() {
             final int[] TIMER = {spMethods.getConfigSec("PracticePvPSystem").getInt("FFaResetTimerMessage")};
 
-            List<Player> players = spMethods.getPlayersInArena("crystalffa");
+
 //            List<Arena> arenas = spAPI.getArenas();
 //
 //            for (Arena arenaList : arenas) {
@@ -33,6 +30,8 @@ public class FFaArenaRollbackTimer {
 
             Bukkit.getScheduler().runTaskTimer(LDCore.getInstance(), main -> {
 
+
+                List<Player> players = spMethods.getPlayersInArena("crystalffa");
 
 
                 if (TIMER[0] == 60 || TIMER[0] == 45 || TIMER[0] == 30 || TIMER[0] == 15) {
