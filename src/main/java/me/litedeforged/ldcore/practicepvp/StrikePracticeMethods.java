@@ -9,13 +9,10 @@ import ga.strikepractice.party.Party;
 import me.litedeforged.ldcore.LDCore;
 import me.litedeforged.ldcore.message.Components;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 public class StrikePracticeMethods {
 
@@ -23,7 +20,6 @@ public class StrikePracticeMethods {
 
     private static final StrikePracticeAPI spAPI = StrikePractice.getAPI();
 
-    public final static HashMap<UUID, Location> deathLocationStore = new HashMap<>();
 
     public Fight getFight(Player player) {
         if (spAPI.getFight(player) == null) {
