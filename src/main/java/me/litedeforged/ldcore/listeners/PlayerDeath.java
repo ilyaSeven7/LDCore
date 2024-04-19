@@ -1,6 +1,7 @@
 package me.litedeforged.ldcore.listeners;
 
 import me.litedeforged.ldcore.LDCore;
+import me.litedeforged.ldcore.commands.FFALastDeathLocation;
 import me.litedeforged.ldcore.deathMessage.fileManager.ConfigManager;
 import me.litedeforged.ldcore.practicepvp.StrikePracticeMethods;
 import net.kyori.adventure.text.Component;
@@ -15,17 +16,18 @@ public class PlayerDeath implements Listener {
 
     StrikePracticeMethods spMethods = new StrikePracticeMethods();
 
+    private static PlayerDeathEvent instance;
+
+    public static PlayerDeathEvent getInstance() {return instance;}
+
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
+        instance = event;
 
         Player player = event.getPlayer();
 
-        if (spMethods.getFight(player) == null || cause(player).equalsIgnoreCase("SUFFOCATION")) return;
+        FFALastDeathLocation.addPlayerToHashMp();
 
-
-        if (spMethods.getFight(player).getArena().getName().equalsIgnoreCase("crystalffa") && StrikePracticeMethods.deathLocationStore.get(player.getUniqueId()) == null) {
-            StrikePracticeMethods.deathLocationStore.put(player.getUniqueId(), player.getLocation());
-        }
 
 //      #When A Player Die Send Dead Location For Them.
         if (LDCore.getInstance().getConfig().getConfigurationSection("DeathMessage").getBoolean("toggle")) {
