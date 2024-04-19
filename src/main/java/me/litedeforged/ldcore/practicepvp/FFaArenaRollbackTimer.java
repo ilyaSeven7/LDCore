@@ -1,6 +1,7 @@
 package me.litedeforged.ldcore.practicepvp;
 
 import me.litedeforged.ldcore.LDCore;
+import me.litedeforged.ldcore.commands.FFALastDeathLocation;
 import me.litedeforged.ldcore.message.Components;
 
 import org.bukkit.Bukkit;
@@ -56,6 +57,7 @@ public class FFaArenaRollbackTimer {
                     players.forEach(playerList -> spMethods.getPlayerLastEditedKit(playerList));
                     spMethods.getArena("crystalffa").setCustomMaxChangesPerTick(1000);
                     spMethods.getArena("crystalffa").quickRollback();
+                    FFALastDeathLocation.removeAllPlayersFromHashMp();
 
 
                     main.cancel();

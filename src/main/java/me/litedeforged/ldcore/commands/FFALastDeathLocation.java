@@ -46,6 +46,9 @@ public class FFALastDeathLocation implements CommandExecutor {
             }
         return false;
     }
+    public static void removeAllPlayersFromHashMp() {
+        deathLocationStore.clear();
+    }
 
     public static void addPlayerToHashMp() {
         Player player = playerDeathEvent().getPlayer();
