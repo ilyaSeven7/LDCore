@@ -17,3 +17,5 @@ commands:
     permission: 'ldcore.practicepvp.commands.forcearenarollback'
   clientdetector:
     permission: 'ldcore.game.commands.clientdetector'
+  ff:
+    permission: 'ldcore.game.commands.ff'
