@@ -34,6 +34,7 @@ public final class LDCore extends JavaPlugin {
         getCommand("partylimit").setExecutor(new PartyLimit());
         getCommand("forcearenarollback").setExecutor(new ForceArenaRollback());
         getCommand("clientdetector").setExecutor(new ClientDetector());
+        getCommand("ff").setExecutor(new LeaveMatch());
 
 
 
